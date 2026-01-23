@@ -54,6 +54,31 @@ sudo ln libxmrig-cuda.so ~/xmrig/build/libxmrig-cuda.so
 
 sudo init 6 #Reboot , damit der Kernel die neuen  Nvidia Module  lädt (sudo dmesg , bei Problemen)
 
+Vor Ausführung des:
+https://github.com/xmrig/xmrig/blob/master/scripts/randomx_boost.sh
+ist die Installation von:
+apt install msr-tools
+#Paketlisten werden gelesen… Fertig
+#Abhängigkeitsbaum wird aufgebaut… Fertig
+#Statusinformationen werden eingelesen… Fertig
+#Die folgenden NEUEN Pakete werden installiert:
+#  msr-tools
+#0 aktualisiert, 1 neu installiert, 0 zu entfernen und 0 nicht aktualisiert.
+#Es müssen 10,1 kB an Archiven heruntergeladen werden.
+#Nach dieser Operation werden 46,1 kB Plattenplatz zusätzlich benutzt.
+#Holen:1 http://deb.debian.org/debian bookworm/main amd64 msr-tools amd64 #1.3-5 [10,1 kB]
+#Es wurden 10,1 kB in 0 s geholt (278 kB/s).
+#Vormals nicht ausgewähltes Paket msr-tools wird gewählt.
+#(Lese Datenbank ... 303799 Dateien und Verzeichnisse sind derzeit #installiert.)
+#Vorbereitung zum Entpacken von .../msr-tools_1.3-5_amd64.deb ...
+#Entpacken von msr-tools (1.3-5) ...
+#msr-tools (1.3-5) wird eingerichtet ...
+#Trigger für man-db (2.11.2-2) werden verarbeitet ...
+#root@mx25:/home/u25/xmrig/scripts# ./randomx_boost.sh 
+#Detected Zen3 CPU
+#MSR register values for Zen3 applied
+
+
 # inhalt der ~/xmrig/build/config.json
 {
     "autosave": true,
@@ -79,4 +104,7 @@ sudo init 6 #Reboot , damit der Kernel die neuen  Nvidia Module  lädt (sudo dme
 sudo ./xmrig/build/xmrig
 # im dritten Fenster ggf. bpytop um bzw. Systemmonitor zur Temperaturüberwachung ec. 
 
+Ausserdem, bei verwendung von Arbeitsrechner, zum Mining zwischendurch:
+while true; do [ xprintidle -gt 30000 ] && screen -X stuff 'r'; sleep 12; done
+https://odysee.com/@Josef_Federl:9/Automatisiertes_Resumen_von_Xmrig
 
